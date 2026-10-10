@@ -14,6 +14,8 @@ namespace StudentManagerPro
         public FrmMain()
         {
             InitializeComponent();
+
+            string connString =DAL.Helper.SQLHelper.connString;
         }
 
         private void FrmMain_Load(object sender, EventArgs e)

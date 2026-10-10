@@ -15,3 +15,4 @@ c:\users\administrator\source\repos\test\StudentManagerPro\StudentManagerPro\obj
 c:\users\administrator\source\repos\test\StudentManagerPro\StudentManagerPro\obj\Debug\StudentManagerPro.exe
 c:\users\administrator\source\repos\test\StudentManagerPro\StudentManagerPro\obj\Debug\StudentManagerPro.pdb
 c:\users\administrator\source\repos\test\StudentManagerPro\StudentManagerPro\obj\Debug\StudentManagerPro.FrmStudentManage.resources
+c:\users\administrator\source\repos\test\StudentManagerPro\StudentManagerPro\bin\Debug\StudentManagerPro.exe.config

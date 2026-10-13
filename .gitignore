@@ -1,9 +1,40 @@
-.vs/StudentManagerPro/v15/.suo
-.vs/StudentManagerPro/v15/Server/sqlite3/db.lock
-.vs/StudentManagerPro/v15/Server/sqlite3/storage.ide
-.vs/StudentManagerPro/v15/Server/sqlite3/storage.ide-shm
-.vs/StudentManagerPro/v15/Server/sqlite3/storage.ide-wal
-DAL/bin/Debug/DAL.dll
-DAL/bin/Debug/DAL.pdb
-DAL/bin/Debug/DAL.dll
-DAL/bin/Debug/DAL.pdb
+# ======================
+# Visual Studio 临时文件
+# ======================
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ======================
+# 编译输出
+# ======================
+[Bb]in/
+[Oo]bj/
+
+# ======================
+# NuGet
+# ======================
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+!**/[Pp]ackages/repositories.config
+
+# ======================
+# 构建日志与测试结果
+# ======================
+*.log
+*.tlog
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# ======================
+# 其他
+# ======================
+*.pdb
+*.cache
+*.dll.config
+*.exe.config
+*.bak

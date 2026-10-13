@@ -15,7 +15,11 @@ namespace StudentManagerPro
         {
             InitializeComponent();
 
-            string connString =DAL.Helper.SQLHelper.connString;
+            // string connString =DAL.Helper.SQLHelper.connString;
+            // connString = Common.StringSecurity.EncryptDES(connString);
+
+            //显示登录用户名
+            this.lblCurrentUser.Text = Program.objCurrentAdmin.AdminName+"】";
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -88,6 +92,23 @@ namespace StudentManagerPro
         {
             ClosePreForm();
             OpenForm(new FrmStudentManage());
+        }
+
+        public static FrmAddStudent objFrmAddStudent = null;
+        private void tsmiAddStudent_Click(object sender, EventArgs e)
+        {
+            if(objFrmAddStudent == null)
+            {
+                objFrmAddStudent = new FrmAddStudent();
+                objFrmAddStudent.Show();
+            }
+            else 
+            {
+                objFrmAddStudent.Activate();
+                objFrmAddStudent.WindowState = FormWindowState.Normal;
+            }
+            
+
         }
     }
 }

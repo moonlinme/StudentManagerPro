@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\StringSecurity.cs" />
     <Compile Include="FrmAddStudent.cs">
       <SubType>Form</SubType>
     </Compile>

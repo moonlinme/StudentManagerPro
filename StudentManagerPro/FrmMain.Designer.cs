@@ -35,12 +35,12 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.退出系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.学员管理MToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.添加学员ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAddStudent = new System.Windows.Forms.ToolStripMenuItem();
             this.批量导入学员IToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.学员信息管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblCurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.c开发环境ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.所有程序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,53 +88,54 @@
             // tsmi_PwdModify
             // 
             this.tsmi_PwdModify.Name = "tsmi_PwdModify";
-            this.tsmi_PwdModify.Size = new System.Drawing.Size(144, 22);
+            this.tsmi_PwdModify.Size = new System.Drawing.Size(180, 22);
             this.tsmi_PwdModify.Text = "密码修改(&M)";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // 退出系统ToolStripMenuItem
             // 
             this.退出系统ToolStripMenuItem.Name = "退出系统ToolStripMenuItem";
-            this.退出系统ToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.退出系统ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.退出系统ToolStripMenuItem.Text = "退出系统";
             // 
             // 学员管理MToolStripMenuItem
             // 
             this.学员管理MToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.添加学员ToolStripMenuItem,
+            this.tsmiAddStudent,
             this.批量导入学员IToolStripMenuItem,
             this.学员信息管理ToolStripMenuItem});
             this.学员管理MToolStripMenuItem.Name = "学员管理MToolStripMenuItem";
             this.学员管理MToolStripMenuItem.Size = new System.Drawing.Size(88, 21);
             this.学员管理MToolStripMenuItem.Text = "学员管理(&M)";
             // 
-            // 添加学员ToolStripMenuItem
+            // tsmiAddStudent
             // 
-            this.添加学员ToolStripMenuItem.Name = "添加学员ToolStripMenuItem";
-            this.添加学员ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.添加学员ToolStripMenuItem.Text = "添加学员(&A)";
+            this.tsmiAddStudent.Name = "tsmiAddStudent";
+            this.tsmiAddStudent.Size = new System.Drawing.Size(180, 22);
+            this.tsmiAddStudent.Text = "添加学员(&A)";
+            this.tsmiAddStudent.Click += new System.EventHandler(this.tsmiAddStudent_Click);
             // 
             // 批量导入学员IToolStripMenuItem
             // 
             this.批量导入学员IToolStripMenuItem.Name = "批量导入学员IToolStripMenuItem";
-            this.批量导入学员IToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.批量导入学员IToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.批量导入学员IToolStripMenuItem.Text = "批量导入学员(&I)";
             // 
             // 学员信息管理ToolStripMenuItem
             // 
             this.学员信息管理ToolStripMenuItem.Name = "学员信息管理ToolStripMenuItem";
-            this.学员信息管理ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.学员信息管理ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.学员信息管理ToolStripMenuItem.Text = "学员信息管理";
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2,
+            this.lblCurrentUser,
             this.toolStripDropDownButton1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 707);
             this.statusStrip1.Name = "statusStrip1";
@@ -149,11 +150,11 @@
             this.toolStripStatusLabel1.Text = "版本号：V2.0";
             this.toolStripStatusLabel1.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
             // 
-            // toolStripStatusLabel2
+            // lblCurrentUser
             // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(83, 17);
-            this.toolStripStatusLabel2.Text = "当前用户：***";
+            this.lblCurrentUser.Name = "lblCurrentUser";
+            this.lblCurrentUser.Size = new System.Drawing.Size(83, 17);
+            this.lblCurrentUser.Text = "当前用户：***";
             // 
             // toolStripDropDownButton1
             // 
@@ -344,7 +345,7 @@
         private System.Windows.Forms.ToolStripMenuItem 退出系统ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem 学员管理MToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 添加学员ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAddStudent;
         private System.Windows.Forms.ToolStripMenuItem 批量导入学员IToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 学员信息管理ToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
@@ -352,7 +353,7 @@
         private System.Windows.Forms.ToolStripMenuItem c开发环境ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 所有程序ToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel lblCurrentUser;
         private System.Windows.Forms.SplitContainer spContainer;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Button btnAddStudent;

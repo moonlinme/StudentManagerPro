@@ -7,6 +7,8 @@ using System.Data;
 using System.Data.SqlClient;
 
 using System.Configuration;
+using DAL;
+using System.Windows.Forms;
 
 namespace DAL.Helper
 {
@@ -58,8 +60,10 @@ namespace DAL.Helper
             }
             catch (Exception ex)
             {
-                // 记录日志
-                throw ex;
+                // 弹窗提示错误信息
+                MessageBox.Show($"操作失败：{ex.Message}");
+                return 0;
+            
             }
             finally
             {

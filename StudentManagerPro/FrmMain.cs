@@ -110,5 +110,19 @@ namespace StudentManagerPro
             
 
         }
+
+        private void tsbExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("确定退出吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if(result != DialogResult.OK)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

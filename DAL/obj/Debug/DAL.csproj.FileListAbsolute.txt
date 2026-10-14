@@ -1,9 +1,0 @@
-c:\users\administrator\source\repos\test\StudentManagerPro\DAL\bin\Debug\DAL.dll
-c:\users\administrator\source\repos\test\StudentManagerPro\DAL\bin\Debug\DAL.pdb
-c:\users\administrator\source\repos\test\StudentManagerPro\DAL\bin\Debug\Models.dll
-c:\users\administrator\source\repos\test\StudentManagerPro\DAL\bin\Debug\Models.pdb
-c:\users\administrator\source\repos\test\StudentManagerPro\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
-c:\users\administrator\source\repos\test\StudentManagerPro\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
-c:\users\administrator\source\repos\test\StudentManagerPro\DAL\obj\Debug\DAL.csproj.CopyComplete
-c:\users\administrator\source\repos\test\StudentManagerPro\DAL\obj\Debug\DAL.dll
-c:\users\administrator\source\repos\test\StudentManagerPro\DAL\obj\Debug\DAL.pdb

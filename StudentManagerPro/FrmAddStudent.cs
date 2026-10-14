@@ -12,7 +12,7 @@ using Models;
 using DAL.Helper;
 namespace StudentManagerPro
 {
-    public partial class FrmAddStudent : Form
+    public partial class FrmAddStudent : Form, IMessageReceiver
     {
         //
         private StudentClassService objClassService = new StudentClassService();
@@ -25,6 +25,19 @@ namespace StudentManagerPro
             this.cboClassName.DisplayMember = "ClassName";
             this.cboClassName.ValueMember = "ClassId";
             this.cboClassName.SelectedIndex = -1;
+            // 订阅群聊（实现 IMessageReceiver 接口），并广播自己已打开
+            MessageCenter.Subscribe(this);
+            MessageCenter.Broadcast("添加学员", "窗体已打开");
+        }
+
+        /// <summary>
+        /// 接口实现：收到其他窗体的广播消息
+        /// </summary>
+        public void Receive(string senderName, string message)
+        {
+            // 忽略自己发的消息
+            if (senderName == "添加学员") return;
+            MessageBox.Show("[" + senderName + "] " + message, "添加学员收到消息");
         }
 
         private void FrmAddStudent_Load(object sender, EventArgs e)
@@ -54,6 +67,9 @@ namespace StudentManagerPro
 
         private void FrmAddStudent_FormClosed(object sender, FormClosedEventArgs e)
         {
+            // 广播关闭消息，并取消订阅
+            MessageCenter.Broadcast("添加学员", "窗体已关闭");
+            MessageCenter.Unsubscribe(this);
             // 关闭时，将对象设为null
             FrmMain.objFrmAddStudent = null;
             
@@ -98,8 +114,8 @@ namespace StudentManagerPro
             {
                 if (objStudentService.AddStudent(objStudent) > 0)
                 {
-                    // 通过委托通知学员管理窗体刷新列表
-                    FrmStudentManage.NotifyStudentChanged(objStudent.StudentName);
+                    // 通过全局总线通知所有订阅的窗体（图/网状通信）
+                    Program.NotifyStudentChanged(objStudent.StudentName);
 
                    DialogResult result = MessageBox.Show("添加学员成功，是否继续添加？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                    if(result == DialogResult.Yes)

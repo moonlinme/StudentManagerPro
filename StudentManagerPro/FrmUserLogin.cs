@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +12,34 @@ using Models;
 
 namespace StudentManagerPro
 {
-    public partial class FrmUserLogin : Form
+    public partial class FrmUserLogin : Form, IMessageReceiver
     {
         // 创建数据访问类对象
         private SysAdminService objAdminService = new SysAdminService();
         public FrmUserLogin()
         {
             InitializeComponent();
+            // 订阅群聊（实现 IMessageReceiver 接口），并广播自己已打开
+            MessageCenter.Subscribe(this);
+            MessageCenter.Broadcast("登录窗体", "窗体已打开");
+        }
+
+        /// <summary>
+        /// 接口实现：收到其他窗体的广播消息
+        /// </summary>
+        public void Receive(string senderName, string message)
+        {
+            // 忽略自己发的消息
+            if (senderName == "登录窗体") return;
+            MessageBox.Show("[" + senderName + "] " + message, "登录窗体收到消息");
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            // 广播关闭消息，并取消订阅
+            MessageCenter.Broadcast("登录窗体", "窗体已关闭");
+            MessageCenter.Unsubscribe(this);
+            base.OnFormClosed(e);
         }
 
         private void FrmUserLogin_Load(object sender, EventArgs e)

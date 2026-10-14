@@ -9,34 +9,26 @@ using System.Windows.Forms;
 
 namespace StudentManagerPro
 {
-    public partial class FrmStudentManage : Form
+    public partial class FrmStudentManage : Form, IMessageReceiver
     {
-        /// <summary>
-        /// 定义委托：接收学员姓名，用于跨窗体通知
-        /// </summary>
-        public delegate void StudentChangedHandler(string studentName);
-
-        /// <summary>
-        /// 静态事件：供其他窗体（如 FrmAddStudent）触发，通知本窗体刷新
-        /// </summary>
-        public static event StudentChangedHandler StudentChanged;
-
-        /// <summary>
-        /// 供其他窗体调用，触发学员变更事件
-        /// </summary>
-        public static void NotifyStudentChanged(string studentName)
-        {
-            if (StudentChanged != null)
-            {
-                StudentChanged(studentName);
-            }
-        }
-
         public FrmStudentManage()
         {
             InitializeComponent();
-            // 订阅静态事件
-            StudentChanged += OnStudentChanged;
+            // 订阅学员变更事件
+            Program.StudentChanged += OnStudentChanged;
+            // 订阅群聊（实现 IMessageReceiver 接口），并广播自己已打开
+            MessageCenter.Subscribe(this);
+            MessageCenter.Broadcast("学员管理", "窗体已打开");
+        }
+
+        /// <summary>
+        /// 接口实现：收到其他窗体的广播消息
+        /// </summary>
+        public void Receive(string senderName, string message)
+        {
+            // 忽略自己发的消息
+            if (senderName == "学员管理") return;
+            MessageBox.Show("[" + senderName + "] " + message, "学员管理收到消息");
         }
 
         /// <summary>
@@ -49,8 +41,10 @@ namespace StudentManagerPro
 
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
-            // 取消订阅，避免内存泄漏
-            StudentChanged -= OnStudentChanged;
+            // 广播关闭消息，并取消订阅，避免内存泄漏
+            MessageCenter.Broadcast("学员管理", "窗体已关闭");
+            Program.StudentChanged -= OnStudentChanged;
+            MessageCenter.Unsubscribe(this);
             base.OnFormClosed(e);
         }
 

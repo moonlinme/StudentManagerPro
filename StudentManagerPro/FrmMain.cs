@@ -112,9 +112,18 @@ namespace StudentManagerPro
 
         private void btnStudentManage_Click(object sender, EventArgs e)
         {
+            // 1
+            FrmStudentManage frmStudentManage = new FrmStudentManage();
+            frmStudentManage.OnDataPass += ShowData;
+            frmStudentManage.Show();
             ClosePreForm();
             OpenForm(new FrmStudentManage());
         }
+
+        // 这个方法签名必须和委托一致（参数是 string）
+        private void ShowData ( string data ) {
+        this.testZhuForm.Text = data; // 子窗体传过来的文字显示到标签
+         }
 
         public static FrmAddStudent objFrmAddStudent = null;
         private void tsmiAddStudent_Click(object sender, EventArgs e)

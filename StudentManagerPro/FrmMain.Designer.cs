@@ -38,6 +38,7 @@
             this.tsmiAddStudent = new System.Windows.Forms.ToolStripMenuItem();
             this.批量导入学员IToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.学员信息管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbExit = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblCurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
@@ -55,7 +56,7 @@
             this.btnAddStudent = new System.Windows.Forms.Button();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.label1 = new System.Windows.Forms.Label();
-            this.tsbExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.testZhuForm = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spContainer)).BeginInit();
@@ -90,18 +91,18 @@
             // tsmi_PwdModify
             // 
             this.tsmi_PwdModify.Name = "tsmi_PwdModify";
-            this.tsmi_PwdModify.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_PwdModify.Size = new System.Drawing.Size(144, 22);
             this.tsmi_PwdModify.Text = "密码修改(&M)";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(141, 6);
             // 
             // 退出系统ToolStripMenuItem
             // 
             this.退出系统ToolStripMenuItem.Name = "退出系统ToolStripMenuItem";
-            this.退出系统ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.退出系统ToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.退出系统ToolStripMenuItem.Text = "退出系统";
             // 
             // 学员管理MToolStripMenuItem
@@ -117,21 +118,28 @@
             // tsmiAddStudent
             // 
             this.tsmiAddStudent.Name = "tsmiAddStudent";
-            this.tsmiAddStudent.Size = new System.Drawing.Size(180, 22);
+            this.tsmiAddStudent.Size = new System.Drawing.Size(160, 22);
             this.tsmiAddStudent.Text = "添加学员(&A)";
             this.tsmiAddStudent.Click += new System.EventHandler(this.tsmiAddStudent_Click);
             // 
             // 批量导入学员IToolStripMenuItem
             // 
             this.批量导入学员IToolStripMenuItem.Name = "批量导入学员IToolStripMenuItem";
-            this.批量导入学员IToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.批量导入学员IToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.批量导入学员IToolStripMenuItem.Text = "批量导入学员(&I)";
             // 
             // 学员信息管理ToolStripMenuItem
             // 
             this.学员信息管理ToolStripMenuItem.Name = "学员信息管理ToolStripMenuItem";
-            this.学员信息管理ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.学员信息管理ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.学员信息管理ToolStripMenuItem.Text = "学员信息管理";
+            // 
+            // tsbExit
+            // 
+            this.tsbExit.Name = "tsbExit";
+            this.tsbExit.Size = new System.Drawing.Size(68, 21);
+            this.tsbExit.Text = "退出系统";
+            this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
             // 
             // statusStrip1
             // 
@@ -192,6 +200,7 @@
             // 
             // spContainer.Panel1
             // 
+            this.spContainer.Panel1.Controls.Add(this.testZhuForm);
             this.spContainer.Panel1.Controls.Add(this.button8);
             this.spContainer.Panel1.Controls.Add(this.button7);
             this.spContainer.Panel1.Controls.Add(this.button6);
@@ -312,12 +321,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "欢迎使用学员信息管理系统";
             // 
-            // tsbExit
+            // testZhuForm
             // 
-            this.tsbExit.Name = "tsbExit";
-            this.tsbExit.Size = new System.Drawing.Size(68, 21);
-            this.tsbExit.Text = "退出系统";
-            this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
+            this.testZhuForm.Location = new System.Drawing.Point(22, 377);
+            this.testZhuForm.Name = "testZhuForm";
+            this.testZhuForm.Size = new System.Drawing.Size(75, 23);
+            this.testZhuForm.TabIndex = 2;
+            this.testZhuForm.Text = "testZhuForm";
+            this.testZhuForm.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
@@ -376,6 +387,7 @@
         private System.Windows.Forms.Button btnStudentManage;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem tsbExit;
+        private System.Windows.Forms.Button testZhuForm;
     }
 }
 

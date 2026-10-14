@@ -98,6 +98,9 @@ namespace StudentManagerPro
             {
                 if (objStudentService.AddStudent(objStudent) > 0)
                 {
+                    // 通过委托通知学员管理窗体刷新列表
+                    FrmStudentManage.NotifyStudentChanged(objStudent.StudentName);
+
                    DialogResult result = MessageBox.Show("添加学员成功，是否继续添加？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                    if(result == DialogResult.Yes)
                    {

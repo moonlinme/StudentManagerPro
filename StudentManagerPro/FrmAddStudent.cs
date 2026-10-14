@@ -28,6 +28,8 @@ namespace StudentManagerPro
             // 订阅群聊（实现 IMessageReceiver 接口），并广播自己已打开
             MessageCenter.Subscribe(this);
             MessageCenter.Broadcast("添加学员", "窗体已打开");
+            // 订阅委托版通信：提供符合签名的方法，触发时收数据
+            Program.DataPass += ReceiveData;
         }
 
         /// <summary>
@@ -38,6 +40,14 @@ namespace StudentManagerPro
             // 忽略自己发的消息
             if (senderName == "添加学员") return;
             MessageBox.Show("[" + senderName + "] " + message, "添加学员收到消息");
+        }
+
+        /// <summary>
+        /// 委托版通信：提供符合 DataPassHandler 签名的方法，触发时收数据
+        /// </summary>
+        private void ReceiveData(string data)
+        {
+            MessageBox.Show("添加学员窗体收到数据：" + data);
         }
 
         private void FrmAddStudent_Load(object sender, EventArgs e)
@@ -70,6 +80,7 @@ namespace StudentManagerPro
             // 广播关闭消息，并取消订阅
             MessageCenter.Broadcast("添加学员", "窗体已关闭");
             MessageCenter.Unsubscribe(this);
+            Program.DataPass -= ReceiveData;   // 取消订阅，防止内存泄漏
             // 关闭时，将对象设为null
             FrmMain.objFrmAddStudent = null;
             

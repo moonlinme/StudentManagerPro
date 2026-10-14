@@ -11,12 +11,6 @@ namespace StudentManagerPro
 {
     public partial class FrmStudentManage : Form, IMessageReceiver
     {
-        // 1. 定义委托类型：能存"接收 string"的方法
-        public delegate void DataPassHandler ( string data ) ;
-        // 2. 暴露一个委托实例，主窗体往里塞方法
-        public DataPassHandler OnDataPass;
-
-
         public FrmStudentManage()
         {
             InitializeComponent();
@@ -80,9 +74,8 @@ namespace StudentManagerPro
 
         private void testWeiTuo_Click(object sender, EventArgs e)
         {
-            // 3. 触发：判空后调用，把文本框内容传回去
-            if (OnDataPass != null )
-            OnDataPass(testWeiTuo.Text);
+            // 3. 触发：调用全局事件发数据，所有订阅者都能收到
+            Program.SendData(testWeiTuo.Text);
             this .Close();
 
         }

@@ -52,6 +52,29 @@ namespace StudentManagerPro
             }
         }
         #endregion
+
+        #region 委托版多窗体通信（谁提供符合签名的方法并订阅，谁就收数据）
+        /// <summary>
+        /// 委托：约定“收数据”方法的形状（接收一个 string）
+        /// </summary>
+        public delegate void DataPassHandler(string data);
+
+        /// <summary>
+        /// 多播事件：任何窗体 += 自己符合签名的方法，就算“订阅”，触发时收到数据
+        /// </summary>
+        public static event DataPassHandler DataPass;
+
+        /// <summary>
+        /// 触发（发数据）：任何窗体调用它，所有订阅者都会收到
+        /// </summary>
+        public static void SendData(string data)
+        {
+            if (DataPass != null)
+            {
+                DataPass(data);
+            }
+        }
+        #endregion
     }
 
     /// <summary>

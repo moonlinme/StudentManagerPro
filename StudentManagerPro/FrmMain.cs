@@ -24,6 +24,8 @@ namespace StudentManagerPro
             // 订阅群聊（实现 IMessageReceiver 接口），并广播自己已打开
             MessageCenter.Subscribe(this);
             MessageCenter.Broadcast("主窗体", "窗体已打开");
+            // 订阅委托版通信：把自己符合签名的方法挂上，触发时收数据
+            Program.DataPass += ShowData;
         }
 
         /// <summary>
@@ -41,6 +43,7 @@ namespace StudentManagerPro
             // 广播关闭消息，并取消订阅
             MessageCenter.Broadcast("主窗体", "窗体已关闭");
             MessageCenter.Unsubscribe(this);
+            Program.DataPass -= ShowData;   // 取消订阅，防止内存泄漏
             base.OnFormClosed(e);
         }
 
@@ -112,10 +115,6 @@ namespace StudentManagerPro
 
         private void btnStudentManage_Click(object sender, EventArgs e)
         {
-            // 1
-            FrmStudentManage frmStudentManage = new FrmStudentManage();
-            frmStudentManage.OnDataPass += ShowData;
-            frmStudentManage.Show();
             ClosePreForm();
             OpenForm(new FrmStudentManage());
         }

@@ -26,6 +26,27 @@ namespace StudentManagerPro
             {
                 Application.Exit();
             }
+            // 委托定向通信演示：A → B → C → A（三个窗体共用同一个类 FrmData）
+            // StartDemo();
+        }
+
+        /// <summary>
+        /// 委托定向通信演示：A → B → C → A（三个窗体共用同一个类 FrmData）
+        /// </summary>
+        public static void StartDemo()
+        {
+            FrmData A = new FrmData("A 主窗体");
+            FrmData B = new FrmData("B 窗体");
+            FrmData C = new FrmData("C 窗体");
+
+            A.SendTo = B.ReceiveData;   // A 输入 → B 收到
+            B.SendTo = C.ReceiveData;   // B 收到后 → 自动转给 C
+            C.SendTo = A.ReceiveData;   // C 输入 → 只传回 A
+            B.AutoForward = true;       // 只有 B 开启"收到后自动转发"
+
+            B.Show();
+            C.Show();
+            Application.Run(A);
         }
         // 定义一个全局变量保存用户对象
         public static Models.SysAdmin objCurrentAdmin = null;

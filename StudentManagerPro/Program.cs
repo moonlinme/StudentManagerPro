@@ -31,19 +31,25 @@ namespace StudentManagerPro
         }
 
         /// <summary>
-        /// 委托定向通信演示：A → B → C → A（三个窗体共用同一个类 FrmData）
+        /// 委托定向通信演示：A → B → C → A（三个窗体共用同一个类 FrmData，靠实例区分角色）
         /// </summary>
         public static void StartDemo()
         {
+            // 1. 同一个类 new 出三个独立窗体实例
             FrmData A = new FrmData("A 主窗体");
             FrmData B = new FrmData("B 窗体");
             FrmData C = new FrmData("C 窗体");
 
-            A.SendTo = B.ReceiveData;   // A 输入 → B 收到
-            B.SendTo = C.ReceiveData;   // B 收到后 → 自动转给 C
-            C.SendTo = A.ReceiveData;   // C 输入 → 只传回 A
-            B.AutoForward = true;       // 只有 B 开启"收到后自动转发"
+            // 2. 接线：把"下家的接收方法"挂到"自己的发送委托"上，形成 A→B→C→A 的环
+            //    接线本身不发数据，只是约定好"以后我发送时，谁来收"
+            A.SendTo = B.ReceiveData;   // A 发送 = 执行 B.ReceiveData（A 发 → B 收）
+            B.SendTo = C.ReceiveData;   // B 发送 = 执行 C.ReceiveData（B 发/转发 → C 收）
+            C.SendTo = A.ReceiveData;   // C 发送 = 执行 A.ReceiveData（C 发 → 只回 A）
 
+            // 3. 只有 B 开启"收到后自动转发"：B 一收到 A 的数据，立刻经 SendTo 转给 C
+            B.AutoForward = true;
+
+            // 4. 显示三个窗体：B、C 非模态弹出，A 作为主窗体启动消息循环（A 关闭则程序退出）
             B.Show();
             C.Show();
             Application.Run(A);

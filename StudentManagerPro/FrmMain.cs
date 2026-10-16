@@ -154,5 +154,20 @@ namespace StudentManagerPro
                 e.Cancel = true;
             }
         }
+
+        private FrmStudentManage objFrmStudentManage = null;
+        private void tsmiManageStudent_Click(object sender, EventArgs e)
+        {
+             if(objFrmStudentManage == null)
+            {
+                objFrmStudentManage = new FrmStudentManage();
+                objFrmStudentManage.Show();
+            }
+            else 
+            {
+                objFrmStudentManage.Activate();
+                objFrmStudentManage.WindowState = FormWindowState.Normal;
+            }
+        }
     }
 }

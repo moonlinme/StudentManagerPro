@@ -7,13 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using DAL;
+using Models;
+using DAL.Helper;
+
 namespace StudentManagerPro
 {
     public partial class FrmStudentManage : Form, IMessageReceiver
     {
+        // 学员服务
+        private StudentService objStudentService = new StudentService();
+        private StudentClassService objClassService = new StudentClassService();
+
         public FrmStudentManage()
         {
             InitializeComponent();
+            // 班级服务
+            this.cboClass.DataSource = objClassService.GetAllClasses();
+            this.cboClass.DisplayMember = "ClassName";
+            this.cboClass.ValueMember = "ClassId";
+            this.cboClass.SelectedIndex = -1;
             // 订阅学员变更事件
             Program.StudentChanged += OnStudentChanged;
             // 订阅群聊（实现 IMessageReceiver 接口），并广播自己已打开
@@ -77,6 +90,28 @@ namespace StudentManagerPro
             // 3. 触发：调用全局事件发数据，所有订阅者都能收到
             Program.SendData(testWeiTuo.Text);
             this .Close();
+
+        }
+
+        //按照班级查询
+        private void btnQuery_Click(object sender, EventArgs e)
+        {
+            // 检查是否选择了班级
+            if (this.cboClass.SelectedIndex == -1)
+            {
+                MessageBox.Show("请选择班级");
+                return;
+            }
+
+            this.dgvStudent.AutoGenerateColumns = false;
+            // 查询班级下的所有学员
+            List<StudentExt> list = objStudentService.GetStudentByClassName(this.cboClass.Text);
+            // 显示查询结果
+            this.dgvStudent.DataSource = list;
+        }
+
+        private void dgvStudent_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

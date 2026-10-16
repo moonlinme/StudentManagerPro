@@ -147,7 +147,7 @@
             this.groupBox1.Location = new System.Drawing.Point(52, 306);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(610, 224);
-            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "学员基本信息";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -158,7 +158,7 @@
             this.cboClassName.Location = new System.Drawing.Point(78, 80);
             this.cboClassName.Name = "cboClassName";
             this.cboClassName.Size = new System.Drawing.Size(144, 20);
-            this.cboClassName.TabIndex = 4;
+            this.cboClassName.TabIndex = 1;
             // 
             // dtpBirthday
             // 
@@ -196,7 +196,7 @@
             this.txtPhoneNumber.Location = new System.Drawing.Point(332, 134);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(260, 21);
-            this.txtPhoneNumber.TabIndex = 1;
+            this.txtPhoneNumber.TabIndex = 4;
             this.txtPhoneNumber.Text = "2545452";
             // 
             // txtStudentAddress
@@ -204,21 +204,21 @@
             this.txtStudentAddress.Location = new System.Drawing.Point(78, 182);
             this.txtStudentAddress.Name = "txtStudentAddress";
             this.txtStudentAddress.Size = new System.Drawing.Size(514, 21);
-            this.txtStudentAddress.TabIndex = 1;
+            this.txtStudentAddress.TabIndex = 5;
             // 
             // txtStudentIdNo
             // 
             this.txtStudentIdNo.Location = new System.Drawing.Point(77, 134);
             this.txtStudentIdNo.Name = "txtStudentIdNo";
             this.txtStudentIdNo.Size = new System.Drawing.Size(145, 21);
-            this.txtStudentIdNo.TabIndex = 1;
+            this.txtStudentIdNo.TabIndex = 3;
             // 
             // txtCardNo
             // 
             this.txtCardNo.Location = new System.Drawing.Point(329, 77);
             this.txtCardNo.Name = "txtCardNo";
             this.txtCardNo.Size = new System.Drawing.Size(263, 21);
-            this.txtCardNo.TabIndex = 1;
+            this.txtCardNo.TabIndex = 2;
             this.txtCardNo.Text = "34082719980704321990";
             // 
             // txtStudentName
@@ -226,7 +226,7 @@
             this.txtStudentName.Location = new System.Drawing.Point(77, 25);
             this.txtStudentName.Name = "txtStudentName";
             this.txtStudentName.Size = new System.Drawing.Size(145, 21);
-            this.txtStudentName.TabIndex = 1;
+            this.txtStudentName.TabIndex = 0;
             this.txtStudentName.Text = "周树人";
             // 
             // label3
@@ -340,7 +340,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimizeBox = false;
             this.Name = "FrmAddStudent";
-            this.Text = "添加新学员";
+            this.Text = "0";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAddStudent_FormClosed);
             this.Load += new System.EventHandler(this.label4_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

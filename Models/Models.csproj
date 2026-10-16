@@ -43,11 +43,10 @@
     <Compile Include="ScoreList.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="StudentClass.cs" />
+    <Compile Include="Ext\StudentExt.cs" />
     <Compile Include="SysAdmin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Ext\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

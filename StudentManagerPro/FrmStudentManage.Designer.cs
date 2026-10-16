@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -39,7 +40,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnQuery = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnEidt = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtStudentId = new System.Windows.Forms.TextBox();
@@ -53,9 +54,13 @@
             this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiModifyStu = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除学员ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -142,16 +147,16 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "学员班级：";
             // 
-            // button5
+            // btnEidt
             // 
-            this.button5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button5.Location = new System.Drawing.Point(636, 117);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(78, 29);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "修改学员";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btnEidt.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnEidt.Location = new System.Drawing.Point(636, 117);
+            this.btnEidt.Name = "btnEidt";
+            this.btnEidt.Size = new System.Drawing.Size(78, 29);
+            this.btnEidt.TabIndex = 4;
+            this.btnEidt.Text = "修改学员";
+            this.btnEidt.UseVisualStyleBackColor = true;
+            this.btnEidt.Click += new System.EventHandler(this.btnEidt_Click);
             // 
             // button6
             // 
@@ -221,14 +226,14 @@
             this.dgvStudent.AllowUserToAddRows = false;
             this.dgvStudent.AllowUserToDeleteRows = false;
             this.dgvStudent.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStudent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStudent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvStudent.ColumnHeadersHeight = 30;
             this.dgvStudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.StudentId,
@@ -236,6 +241,7 @@
             this.Gender,
             this.Birthday,
             this.ClassName});
+            this.dgvStudent.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvStudent.Location = new System.Drawing.Point(56, 301);
             this.dgvStudent.Name = "dgvStudent";
             this.dgvStudent.ReadOnly = true;
@@ -243,6 +249,7 @@
             this.dgvStudent.Size = new System.Drawing.Size(742, 379);
             this.dgvStudent.TabIndex = 6;
             this.dgvStudent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudent_CellContentClick);
+            this.dgvStudent.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudent_CellDoubleClick);
             // 
             // testWeiTuo
             // 
@@ -258,8 +265,8 @@
             // StudentId
             // 
             this.StudentId.DataPropertyName = "StudentId";
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.StudentId.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.StudentId.DefaultCellStyle = dataGridViewCellStyle2;
             this.StudentId.HeaderText = "学号";
             this.StudentId.Name = "StudentId";
             this.StudentId.ReadOnly = true;
@@ -268,8 +275,8 @@
             // StudentName
             // 
             this.StudentName.DataPropertyName = "StudentName";
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.StudentName.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.StudentName.DefaultCellStyle = dataGridViewCellStyle3;
             this.StudentName.HeaderText = "姓名";
             this.StudentName.Name = "StudentName";
             this.StudentName.ReadOnly = true;
@@ -299,6 +306,27 @@
             this.ClassName.Name = "ClassName";
             this.ClassName.ReadOnly = true;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiModifyStu,
+            this.删除学员ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 48);
+            // 
+            // tsmiModifyStu
+            // 
+            this.tsmiModifyStu.Name = "tsmiModifyStu";
+            this.tsmiModifyStu.Size = new System.Drawing.Size(124, 22);
+            this.tsmiModifyStu.Text = "修改学员";
+            this.tsmiModifyStu.Click += new System.EventHandler(this.tsmiModifyStu_Click);
+            // 
+            // 删除学员ToolStripMenuItem
+            // 
+            this.删除学员ToolStripMenuItem.Name = "删除学员ToolStripMenuItem";
+            this.删除学员ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.删除学员ToolStripMenuItem.Text = "删除学员";
+            // 
             // FrmStudentManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -310,7 +338,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btnEidt);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -322,6 +350,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -333,7 +362,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnEidt;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnQuery;
@@ -351,5 +380,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
         private System.Windows.Forms.DataGridViewTextBoxColumn Birthday;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClassName;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiModifyStu;
+        private System.Windows.Forms.ToolStripMenuItem 删除学员ToolStripMenuItem;
     }
 }

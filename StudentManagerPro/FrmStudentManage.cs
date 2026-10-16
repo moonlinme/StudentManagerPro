@@ -136,5 +136,61 @@ namespace StudentManagerPro
         {
 
         }
+
+        private void btnEidt_Click(object sender, EventArgs e)
+        {
+            // 检查是否选择了学员
+            if (this.dgvStudent.RowCount == 0)
+            {
+                MessageBox.Show("请先查询学员");
+                return;
+            }
+            if (this.dgvStudent.CurrentRow==null)
+            {
+                MessageBox.Show("请选择要修改的学员");
+                return;
+            }
+
+            // 获取选中的学员Id
+            string studentId = this.dgvStudent.CurrentRow.Cells["StudentId"].Value.ToString();
+
+            // 查询学员详情
+            StudentExt objStudent = objStudentService.GetStudentById(Convert.ToInt32(studentId));
+
+            //显示要修改的学员信息窗口
+            FrmEditStudent frmEditStudent = new FrmEditStudent(objStudent);
+            DialogResult result = frmEditStudent.ShowDialog();
+
+            //判断修改是否成功
+            if(result == DialogResult.OK)
+            {
+                // 刷新列表
+                btnQuery_Click(null, null);
+            }
+
+
+
+
+            
+        }
+
+        private void tsmiModifyStu_Click(object sender, EventArgs e)
+        {
+            //
+            btnEidt_Click(null,null);
+        }
+
+        private void dgvStudent_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //
+            if (this.dgvStudent.CurrentRow!=null)
+            {
+                // 防止双击表头时出错
+            if (e.RowIndex < 0) return; 
+
+            // 直接复用修改学员按钮的逻辑
+            btnEidt_Click(null, null);
+            }
+        }
     }
 }

@@ -121,5 +121,54 @@ namespace DAL
     }
 
     #endregion
+ #region 修改学员对象
+    /// <summary>
+    /// 检查学员Id号是否已存在
+    /// </summary>
+    /// <param name="studentIdNo">学员Id号</param>
+    /// <param name="studentId">学员Id</param>
+    /// <returns>
+    /// 是否已存在
+    /// </returns>
+ public bool IsIdNoExistd(string studentIdNo,string studentId)
+        {
+            string sql = "select count(*) from Students where StudentIdNo = '{0}' and StudentId<>{1}";
+            sql = string.Format(sql, studentIdNo,studentId);
+
+            int result = Convert.ToInt32(SQLHelper.GetSingleResult(sql));
+            if(result == 1)
+            {
+                return true;
+            }
+            else return false;
+        }
+
+
+    /// <summary>
+    /// 修改学员对象
+    /// </summary>
+    /// <param name="objStudent">学员对象</param>
+    /// <returns>
+    /// 受影响的行数
+    /// </returns>
+    public int ModifyStudent(Student objStudent)
+    {
+       StringBuilder sqlBuilder = new StringBuilder();
+       sqlBuilder.Append("update Students set StudentName=N'{0}',Gender=N'{1}',Birthday='{2}',StudentIdNo=N'{3}',Age={4},PhoneNumber=N'{5}',StudentAddress=N'{6}',ClassId={7} where StudentId={8}");
+       string sql = string.Format(sqlBuilder.ToString(), objStudent.StudentName, objStudent.Gender, objStudent.Birthday, objStudent.StudentIdNo, objStudent.Age, objStudent.PhoneNumber, objStudent.StudentAddress, objStudent.ClassId, objStudent.StudentId);
+      
+      try
+      {
+        return SQLHelper.Update(sql);
+      }
+      catch (Exception ex)
+      {
+        throw new Exception("修改学员失败,数据库操作异常，错误信息：" + ex.Message);
+      }
+
+    }
+    #endregion
+   
         }
     }
+   

@@ -87,6 +87,39 @@ namespace DAL
                 objReader.Close();
                 return list;
             }
+    #endregion
+
+    #region 根据学员Id获取学员信息
+    /// <summary>
+    /// 根据学员Id获取学员信息
+    /// </summary>
+    /// <param name="studentId">学员Id</param>
+    /// <returns>
+    /// 学员信息对象
+    /// </returns>
+    public StudentExt GetStudentById(int studentId)
+    {
+        string sql = "select StudentName,StudentId,Gender,Birthday,ClassName from Students";
+        sql += " inner join StudentClass on Students.ClassId = StudentClass.ClassId";
+        sql += " where StudentId={0}";
+        sql = string.Format(sql, studentId);
+        SqlDataReader objReader = SQLHelper.GetReader(sql);
+        StudentExt objStudent = new StudentExt();
+        if(objReader.Read())
+        {
+                objStudent = new StudentExt()
+                {
+                    StudentId = Convert.ToInt32(objReader["StudentId"]),
+                    StudentName = Convert.ToString(objReader["StudentName"]),
+                    Gender = Convert.ToString(objReader["Gender"]),
+                    Birthday = Convert.ToDateTime(objReader["Birthday"]),
+                    ClassName = Convert.ToString(objReader["ClassName"]),
+                };
+        }
+        objReader.Close();
+        return objStudent;
+    }
+
+    #endregion
         }
     }
-    #endregion

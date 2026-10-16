@@ -114,5 +114,27 @@ namespace StudentManagerPro
         {
 
         }
+
+        private void btnQueryById_Click(object sender, EventArgs e)
+        {
+            //
+            if(this.txtStudentId.Text.Trim() == "")
+            {
+                MessageBox.Show("请输入学员ID");
+                this.txtStudentId.Focus();
+                return;
+            }
+            this.dgvStudent.AutoGenerateColumns = false;
+            StudentExt oneStudent = objStudentService.GetStudentById(Convert.ToInt32(this.txtStudentId.Text));
+            // 显示查询结果
+            List<StudentExt> list = new List<StudentExt>();
+            list.Add(oneStudent);
+            this.dgvStudent.DataSource = list;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

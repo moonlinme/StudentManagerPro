@@ -168,6 +168,34 @@ namespace DAL
 
     }
     #endregion
+
+    #region 删除学员对象
+    /// <summary>
+    /// 删除学员对象
+    /// </summary>
+    /// <param name="studentId">学员Id</param>
+    /// <returns>
+    /// 受影响的行数
+    /// </returns>
+    public int DeleteStudentById(int studentId)
+    {
+        string sql = "delete from Students where StudentId={0}";
+        sql = string.Format(sql, studentId);
+        try
+        {
+            return SQLHelper.Update(sql);
+        }
+        catch (Exception ex)
+        {
+            if(ex.Message.Contains(" FOREIGN KEY constraint"))
+            {
+                throw new Exception("删除学员失败,该学员已被引用，不能删除");
+            }
+            throw new Exception("删除学员失败,数据库操作异常，错误信息：" + ex.Message);
+        }
+    }
+
+    #endregion
    
         }
     }

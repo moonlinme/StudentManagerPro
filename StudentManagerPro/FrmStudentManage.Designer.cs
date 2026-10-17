@@ -41,14 +41,13 @@
             this.btnQuery = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btnEidt = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtStudentId = new System.Windows.Forms.TextBox();
             this.btnQueryById = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.dgvStudent = new System.Windows.Forms.DataGridView();
-            this.testWeiTuo = new System.Windows.Forms.Button();
             this.StudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,7 +55,8 @@
             this.ClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiModifyStu = new System.Windows.Forms.ToolStripMenuItem();
-            this.删除学员ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDelStu = new System.Windows.Forms.ToolStripMenuItem();
+            this.testWeiTuo = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
@@ -158,16 +158,16 @@
             this.btnEidt.UseVisualStyleBackColor = true;
             this.btnEidt.Click += new System.EventHandler(this.btnEidt_Click);
             // 
-            // button6
+            // btnDel
             // 
-            this.button6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button6.Location = new System.Drawing.Point(720, 117);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(78, 29);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "删除学员";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btnDel.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnDel.Location = new System.Drawing.Point(720, 117);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(78, 29);
+            this.btnDel.TabIndex = 4;
+            this.btnDel.Text = "删除学员";
+            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // groupBox2
             // 
@@ -251,17 +251,6 @@
             this.dgvStudent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudent_CellContentClick);
             this.dgvStudent.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudent_CellDoubleClick);
             // 
-            // testWeiTuo
-            // 
-            this.testWeiTuo.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.testWeiTuo.Location = new System.Drawing.Point(374, 44);
-            this.testWeiTuo.Name = "testWeiTuo";
-            this.testWeiTuo.Size = new System.Drawing.Size(156, 29);
-            this.testWeiTuo.TabIndex = 7;
-            this.testWeiTuo.Text = "子窗体委托测试按钮";
-            this.testWeiTuo.UseVisualStyleBackColor = true;
-            this.testWeiTuo.Click += new System.EventHandler(this.testWeiTuo_Click);
-            // 
             // StudentId
             // 
             this.StudentId.DataPropertyName = "StudentId";
@@ -310,22 +299,34 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiModifyStu,
-            this.删除学员ToolStripMenuItem});
+            this.tsmiDelStu});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
             // 
             // tsmiModifyStu
             // 
             this.tsmiModifyStu.Name = "tsmiModifyStu";
-            this.tsmiModifyStu.Size = new System.Drawing.Size(124, 22);
+            this.tsmiModifyStu.Size = new System.Drawing.Size(180, 22);
             this.tsmiModifyStu.Text = "修改学员";
             this.tsmiModifyStu.Click += new System.EventHandler(this.tsmiModifyStu_Click);
             // 
-            // 删除学员ToolStripMenuItem
+            // tsmiDelStu
             // 
-            this.删除学员ToolStripMenuItem.Name = "删除学员ToolStripMenuItem";
-            this.删除学员ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.删除学员ToolStripMenuItem.Text = "删除学员";
+            this.tsmiDelStu.Name = "tsmiDelStu";
+            this.tsmiDelStu.Size = new System.Drawing.Size(180, 22);
+            this.tsmiDelStu.Text = "删除学员";
+            this.tsmiDelStu.Click += new System.EventHandler(this.tsmiDelStu_Click);
+            // 
+            // testWeiTuo
+            // 
+            this.testWeiTuo.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.testWeiTuo.Location = new System.Drawing.Point(374, 44);
+            this.testWeiTuo.Name = "testWeiTuo";
+            this.testWeiTuo.Size = new System.Drawing.Size(156, 29);
+            this.testWeiTuo.TabIndex = 7;
+            this.testWeiTuo.Text = "子窗体委托测试按钮";
+            this.testWeiTuo.UseVisualStyleBackColor = true;
+            this.testWeiTuo.Click += new System.EventHandler(this.testWeiTuo_Click);
             // 
             // FrmStudentManage
             // 
@@ -337,7 +338,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.btnDel);
             this.Controls.Add(this.btnEidt);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label1);
@@ -361,7 +362,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Button btnEidt;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -382,6 +383,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ClassName;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tsmiModifyStu;
-        private System.Windows.Forms.ToolStripMenuItem 删除学员ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDelStu;
     }
 }

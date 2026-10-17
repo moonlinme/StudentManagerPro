@@ -192,5 +192,53 @@ namespace StudentManagerPro
             btnEidt_Click(null, null);
             }
         }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            // 检查是否选择了学员
+            if (this.dgvStudent.RowCount == 0)
+            {
+                MessageBox.Show("请先查询学员");
+                return;
+            }
+            if (this.dgvStudent.CurrentRow==null)
+            {
+                MessageBox.Show("请选择要删除的学员");
+                return;
+            }
+            // 删除确认
+            string studentName = this.dgvStudent.CurrentRow.Cells["StudentName"].Value.ToString();
+            DialogResult result = MessageBox.Show($"确定删除选中的学员{studentName}，吗？", "删除确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result == DialogResult.No)
+            {
+                return;
+            }
+            // 获取选中的学员Id
+            string studentId = this.dgvStudent.CurrentRow.Cells["StudentId"].Value.ToString();
+            // 删除学员
+            try
+            {
+                int rows = objStudentService.DeleteStudentById(Convert.ToInt32(studentId));
+                if(rows > 0)
+                {
+                    MessageBox.Show("删除成功");
+                    // 刷新列表
+                    btnQuery_Click(null, null);
+                }
+                else
+                {
+                    MessageBox.Show("删除失败");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("删除失败,错误信息：" + ex.Message);
+            }
+        }
+
+        private void tsmiDelStu_Click(object sender, EventArgs e)
+        {
+            btnDel_Click(null, null);
+        }
     }
 }

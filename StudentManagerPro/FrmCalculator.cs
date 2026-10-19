@@ -26,7 +26,8 @@ namespace StudentManagerPro
 
         private void FrmCalculator_Load(object sender, EventArgs e)
         {
-            UpdateDisplay();
+            // UpdateDisplay();
+            calculatorEngine.DataChanged += OnDataChanged;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -44,11 +45,18 @@ namespace StudentManagerPro
 
                 calculatorEngine.PressButton(key);
 
-                UpdateDisplay();
+                // UpdateDisplay();
+                // calculatorEngine.DataChanged += OnDataChanged;
             }
         }
 
-        private void UpdateDisplay()
+        // private void UpdateDisplay()
+        // {
+        //     lblExpression.Text = calculatorEngine.Expression;
+        //     lblCurrentInput.Text = calculatorEngine.CurrentInput;
+        // }
+
+        private void OnDataChanged(CalculatorEngine calculatorEngine)
         {
             lblExpression.Text = calculatorEngine.Expression;
             lblCurrentInput.Text = calculatorEngine.CurrentInput;
@@ -62,6 +70,11 @@ namespace StudentManagerPro
         private void lblExpression_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void FrmCalculator_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            calculatorEngine.DataChanged -= OnDataChanged;
         }
     }
 }

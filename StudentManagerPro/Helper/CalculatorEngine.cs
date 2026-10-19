@@ -11,6 +11,19 @@ namespace StudentManagerPro.Helper
         public string Expression { get; private set; } = "";
         private bool _isRewriting = false;
 
+        // 定义委托，使得UI层可以订阅CurrentInput、Expression
+        public delegate void DataChangedHandler(CalculatorEngine calculatorEngine);
+        public event DataChangedHandler DataChanged;
+        
+        private void NotifyDataChanged()
+        {
+            if (DataChanged != null)
+            {
+                DataChanged(this);
+            }
+        }
+
+
         public void PressButton(string key)
         {
             if (char.IsDigit(key[0]) || key == ".")
@@ -109,6 +122,8 @@ namespace StudentManagerPro.Helper
             {
                 Reset();
             }
+
+            NotifyDataChanged();
         }
 
         public void Reset()
@@ -116,6 +131,8 @@ namespace StudentManagerPro.Helper
             CurrentInput = "0"; 
             Expression = "";   
             _isRewriting = false; 
+
+            NotifyDataChanged();
         }
     }
 }

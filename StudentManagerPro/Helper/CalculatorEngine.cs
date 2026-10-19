@@ -11,7 +11,6 @@ namespace StudentManagerPro.Helper
         public string Expression { get; private set; } = "";
         private bool _isRewriting = false;
 
-        // 定义委托，使得UI层可以订阅CurrentInput、Expression
         public delegate void DataChangedHandler(CalculatorEngine calculatorEngine);
         public event DataChangedHandler DataChanged;
         
@@ -23,12 +22,40 @@ namespace StudentManagerPro.Helper
             }
         }
 
-
         public void PressButton(string key)
         {
             if (char.IsDigit(key[0]) || key == ".")
             {
-                if (_isRewriting)
+                HandleDigit(key);
+            }
+            else if (key == "+" || key == "-" || key == "*" || key == "/")
+            {
+                HandleOperator(key);
+            }
+            else if (key == "=")
+            {
+                HandleEquals();
+            }
+
+            else if (key == "X" || key.ToLower() == "del") 
+            {
+                HandleBackspace();
+            }
+
+            else if (key == "+/-") 
+            {
+                HandleNegate();
+            }
+            else if (key.ToUpper() == "C")
+            {
+                Reset();
+            }
+
+            NotifyDataChanged();
+        }
+
+        private void HandleDigit(string key) {
+            if (_isRewriting)
                 {
                     CurrentInput = key;
                     _isRewriting = false;
@@ -45,10 +72,10 @@ namespace StudentManagerPro.Helper
                     if (CurrentInput == "0" && key != ".") CurrentInput = key;
                     else CurrentInput += key;
                 }
-            }
-            else if (key == "+" || key == "-" || key == "*" || key == "/")
-            {
-                if (Expression.EndsWith("="))
+        }
+
+        private void HandleOperator(string key) {
+            if (Expression.EndsWith("="))
                 {
                     Expression = CurrentInput + key;
                     _isRewriting = true;
@@ -65,10 +92,10 @@ namespace StudentManagerPro.Helper
                     Expression += CurrentInput + key;
                     _isRewriting = true;
                 }
-            }
-            else if (key == "=")
-            {
-                if (_isRewriting) return;
+        }
+
+        private void HandleEquals(){
+             if (_isRewriting) return;
                 if (string.IsNullOrEmpty(Expression) && CurrentInput == "0") return;
 
                 string fullExpression = Expression + CurrentInput;
@@ -87,11 +114,10 @@ namespace StudentManagerPro.Helper
                 }
 
                 _isRewriting = true;
-            }
+        }
 
-            else if (key == "X" || key.ToLower() == "del") 
-            {
-                if (_isRewriting) return; 
+        private void HandleBackspace(){
+            if (_isRewriting) return; 
 
                 if (CurrentInput.Length > 1)
                 {
@@ -103,11 +129,10 @@ namespace StudentManagerPro.Helper
                 {
                     CurrentInput = "0";
                 }
-            }
-
-            else if (key == "+/-") 
-            {
-                if (CurrentInput == "0" || string.IsNullOrEmpty(CurrentInput)) return;
+        }
+        
+        private void HandleNegate(){
+            if (CurrentInput == "0" || string.IsNullOrEmpty(CurrentInput)) return;
 
                 if (CurrentInput.StartsWith("-"))
                 {
@@ -117,16 +142,9 @@ namespace StudentManagerPro.Helper
                 {
                     CurrentInput = "-" + CurrentInput;
                 }
-            }
-            else if (key.ToUpper() == "C")
-            {
-                Reset();
-            }
-
-            NotifyDataChanged();
         }
 
-        public void Reset()
+        private void Reset()
         {
             CurrentInput = "0"; 
             Expression = "";   

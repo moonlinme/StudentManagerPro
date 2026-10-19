@@ -169,5 +169,11 @@ namespace StudentManagerPro
                 objFrmStudentManage.WindowState = FormWindowState.Normal;
             }
         }
+
+        private void calculator_Click(object sender, EventArgs e)
+        {
+            FrmCalculator frmCalculator = new FrmCalculator();
+            frmCalculator.Show();
+        }
     }
 }

@@ -46,6 +46,7 @@
             this.c开发环境ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.所有程序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spContainer = new System.Windows.Forms.SplitContainer();
+            this.calculator = new System.Windows.Forms.Button();
             this.testZhuForm = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -118,20 +119,20 @@
             // tsmiAddStudent
             // 
             this.tsmiAddStudent.Name = "tsmiAddStudent";
-            this.tsmiAddStudent.Size = new System.Drawing.Size(180, 22);
+            this.tsmiAddStudent.Size = new System.Drawing.Size(160, 22);
             this.tsmiAddStudent.Text = "添加学员(&A)";
             this.tsmiAddStudent.Click += new System.EventHandler(this.tsmiAddStudent_Click);
             // 
             // 批量导入学员IToolStripMenuItem
             // 
             this.批量导入学员IToolStripMenuItem.Name = "批量导入学员IToolStripMenuItem";
-            this.批量导入学员IToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.批量导入学员IToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.批量导入学员IToolStripMenuItem.Text = "批量导入学员(&I)";
             // 
             // tsmiManageStudent
             // 
             this.tsmiManageStudent.Name = "tsmiManageStudent";
-            this.tsmiManageStudent.Size = new System.Drawing.Size(180, 22);
+            this.tsmiManageStudent.Size = new System.Drawing.Size(160, 22);
             this.tsmiManageStudent.Text = "学员信息管理";
             this.tsmiManageStudent.Click += new System.EventHandler(this.tsmiManageStudent_Click);
             // 
@@ -201,6 +202,7 @@
             // 
             // spContainer.Panel1
             // 
+            this.spContainer.Panel1.Controls.Add(this.calculator);
             this.spContainer.Panel1.Controls.Add(this.testZhuForm);
             this.spContainer.Panel1.Controls.Add(this.button8);
             this.spContainer.Panel1.Controls.Add(this.button7);
@@ -223,6 +225,16 @@
             this.spContainer.Size = new System.Drawing.Size(1264, 682);
             this.spContainer.SplitterDistance = 238;
             this.spContainer.TabIndex = 2;
+            // 
+            // calculator
+            // 
+            this.calculator.Location = new System.Drawing.Point(135, 377);
+            this.calculator.Name = "calculator";
+            this.calculator.Size = new System.Drawing.Size(75, 23);
+            this.calculator.TabIndex = 2;
+            this.calculator.Text = "计算器";
+            this.calculator.UseVisualStyleBackColor = true;
+            this.calculator.Click += new System.EventHandler(this.calculator_Click);
             // 
             // testZhuForm
             // 
@@ -389,6 +401,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem tsbExit;
         private System.Windows.Forms.Button testZhuForm;
+        private System.Windows.Forms.Button calculator;
     }
 }
 

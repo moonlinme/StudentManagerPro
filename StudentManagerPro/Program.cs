@@ -16,18 +16,20 @@ namespace StudentManagerPro
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //创建登录窗体
-            FrmUserLogin objFrmLogin = new FrmUserLogin();
-            DialogResult dialogResult = objFrmLogin.ShowDialog();
-            if (dialogResult == DialogResult.OK)
-            {
-                Application.Run(new FrmMain());
-            }
-            else
-            {
-                Application.Exit();
-            }
+            // FrmUserLogin objFrmLogin = new FrmUserLogin();
+            // DialogResult dialogResult = objFrmLogin.ShowDialog();
+            // if (dialogResult == DialogResult.OK)
+            // {
+            //     Application.Run(new FrmMain());
+            // }
+            // else
+            // {
+            //     Application.Exit();
+            // }
             // 委托定向通信演示：A → B → C → A（三个窗体共用同一个类 FrmData）
             // StartDemo();
+
+            new FrmCalculator().ShowDialog(); 
         }
 
         /// <summary>
